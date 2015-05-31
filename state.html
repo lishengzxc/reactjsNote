@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react</title>
+    <script src="lib/js/react.min.js"></script>
+    <script src="lib/js/JSXTransformer.js"></script>
+</head>
+<body>
+<div id="content"></div>
+<script type="text/jsx">
+    var CommentBox = React.createClass({
+        getInitialState: function() {
+            return {
+                isVisible: true,
+                titleMessage: '你好世界from state'
+            }
+        },
+        sh: function() {
+          this.setState({
+              isVisible: false
+          });
+        },
+        render: function() {
+            var list = [];
+            for (var i = 0; i < 10; i++) {
+                list.push(<CommentList key={i} />)
+            }
+            var styleObj = {
+                display: this.state.isVisible ? 'block' : 'none'
+            }
+            return (
+
+                    <div className="commentBox" style={styleObj} onClick={this.sh}>
+                        <h1>Comments{this.state.titleMessage}</h1>
+                        <CommentList />
+                        {list}
+                        <CommentFoot />
+                    </div>
+            );
+        }
+    });
+
+    var CommentList = React.createClass({
+        getInitialState: function() {
+            return {
+                isVisible: true,
+                titleMessage: '你好世界from state'
+            }
+        },
+        render: function() {
+            return (
+                    <div className="commentList">
+                    {this.state.titleMessage}
+                    </div>
+            );
+        }
+    });
+
+    var CommentForm = React.createClass({
+        render: function() {
+            return (
+                    <div className="commentForm">
+                    Hello, world! I am a CommentForm.
+                    </div>
+            );
+        }
+    });
+
+    var CommentFoot = React.createClass({
+        render: function() {
+            return (
+                    <div className="commentFoot">
+                    Hello, world! I am a CommentFoot.
+                    </div>
+            );
+        }
+    });
+
+    var Box = React.render(
+            <CommentBox />,
+            document.getElementById('content')
+    );
+</script>
+</body>
+</html>
