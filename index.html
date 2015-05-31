@@ -12,15 +12,20 @@
         var CommentBox = React.createClass({
             render: function() {
                 return (
-                        <div className="commentBox">
+                        <div className="commentBox" onClick={this.alertMessage}>
                         Hello, world! I am a CommentBox.
                         </div>
                 );
+            },
+            alertMessage: function(e) {
+                console.log(e);
+                alert("alert");
             }
         });
         React.render(
                 <CommentBox />,
-                document.getElementById('content')
+                document.getElementById('content'),
+                function() { console.log('done') }
         );
     </script>
 </body>
