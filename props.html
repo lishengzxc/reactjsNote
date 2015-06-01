@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react</title>
+    <script src="lib/js/react.min.js"></script>
+    <script src="lib/js/JSXTransformer.js"></script>
+</head>
+<body>
+<div id="content"></div>
+<script type="text/jsx">
+    var MessageBox = React.createClass({
+        getInitialState: function() {
+            return {
+                subMsg: [
+                        'h1',
+                        'h2',
+                        'h3'
+                ]
+            }
+        },
+        render: function() {
+            return (
+                    <div>
+                        <div className="messageBox">{this.props.title}</div>
+                        <SubMessage msg = {this.state.subMsg}/>
+                    </div>
+            )
+        }
+    });
+
+    var SubMessage = React.createClass({
+        // 验证
+        propTypes: {
+            msg: React.PropTypes.array.isRequired
+        },
+        // 默认值
+        getDefaultProps: function() {
+            return {
+                msg: [
+                      '默认信息'
+                ]
+            }
+        },
+        render: function() {
+            var msgs = [];
+            this.props.msg.forEach(function(v, i) {
+                msgs.push(
+                        <p>{v}</p>
+                )
+            });
+            return (
+                    <div>{msgs}</div>
+            )
+        }
+    });
+    var box = React.render(
+      <MessageBox title="顶层"/>, document.getElementById('content')
+    );
+</script>
+</body>
+</html>
