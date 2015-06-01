@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react</title>
+    <script src="lib/js/react.min.js"></script>
+    <script src="lib/js/JSXTransformer.js"></script>
+</head>
+<body>
+<div id="content"></div>
+<script type="text/jsx">
+    var ClickApp = React.createClass({
+        getInitialState: function() {
+            return {
+                clickCount: 0
+            }
+        },
+        clicked: function(e) {
+            this.setState({
+                clickCount: this.state.clickCount + 1
+            });
+            console.log(e.target);
+//            console.log(e.nativeEvent);
+        },
+        render: function() {
+            return (
+                    <div>
+                            <h2>点击下面按钮</h2>
+                            <button onClick={this.clicked}>点击我</button>
+                            <p>你一共点击了：{this.state.clickCount}</p>
+                    </div>
+            )
+        }
+
+    });
+
+    var cp = React.render(
+        <ClickApp />,
+        document.getElementById('content')
+    );
+</script>
+</body>
+</html>
