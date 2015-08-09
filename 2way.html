@@ -9,7 +9,7 @@
 <body>
   <div id="app"></div>
   <script type="text/jsx">
-    var EasyFrom = React.createClass({
+    var Main = React.createClass({
       mixins: [React.addons.LinkedStateMixin],
       getInitialState: function () {
         return {
@@ -20,8 +20,8 @@
       render: function () {
         return (
           <div>
-            <h1>我想说：{this.state.message}</h1>
-            <h2>React是不是很好用？{this.state.isReactAwesome ? '非常好用' : '不好用'}</h2>
+            <h1>message：{this.state.message}</h1>
+            <h2>checkbox？{this.state.isReactAwesome ? 't' : 'f'}</h2>
             <input type="text" valueLink={this.linkState('message')} /> <br/>
             <input type="checkbox" checkedLink={this.linkState('isReactAwesome')} />
             <br/>
