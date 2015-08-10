@@ -9,7 +9,7 @@
 <body>
   <div id="app"></div>
   <script type="text/jsx">
-    var Main = React.createClass({
+    var EasyFrom = React.createClass({
       mixins: [React.addons.LinkedStateMixin],
       getInitialState: function () {
         return {
@@ -36,6 +36,7 @@
         return (
           <div>
             <p>sub</p>
+            <Ssub {...this.props}/>
             <Ssub {...this.props}/>
           </div>
         )
